@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Pagingview by KyoheiG3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Pagingview</h1>
+      <h2 class="project-tagline">Infinite paging, Smart auto layout, Interface of similar to UIKit.</h2>
+      <a href="https://github.com/KyoheiG3/PagingView" class="btn">View on GitHub</a>
+      <a href="https://github.com/KyoheiG3/PagingView/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/KyoheiG3/PagingView/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="pagingview" class="anchor" href="#pagingview" aria-hidden="true"><span class="octicon octicon-link"></span></a>PagingView</h1>
+
+<p><a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a>
+<a href="http://cocoadocs.org/docsets/PagingView"><img src="https://img.shields.io/cocoapods/v/PagingView.svg?style=flat" alt="Version"></a>
+<a href="http://cocoadocs.org/docsets/PagingView"><img src="https://img.shields.io/cocoapods/l/PagingView.svg?style=flat" alt="License"></a>
+<a href="http://cocoadocs.org/docsets/PagingView"><img src="https://img.shields.io/cocoapods/p/PagingView.svg?style=flat" alt="Platform"></a></p>
+
+<p>Infinite paging, Smart auto layout, Interface of similar to UIKit.</p>
+
+<h4>
+<a id="appetizes-demo" class="anchor" href="#appetizes-demo" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://appetize.io/app/030jqrt4nkm60rc0qu1wrvg4v8">Appetize's Demo</a>
+</h4>
+
+<h2>
+<a id="how-to-install-pagingview" class="anchor" href="#how-to-install-pagingview" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Install PagingView</h2>
+
+<h3>
+<a id="ios-8" class="anchor" href="#ios-8" aria-hidden="true"><span class="octicon octicon-link"></span></a>iOS 8+</h3>
+
+<h4>
+<a id="cocoapods" class="anchor" href="#cocoapods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cocoapods</h4>
+
+<p>Add the following to your <code>Podfile</code>:</p>
+
+<div class="highlight highlight-Ruby"><pre>use_frameworks!
+pod <span class="pl-s"><span class="pl-pds">"</span>PagingView<span class="pl-pds">"</span></span></pre></div>
+
+<p>Note: the <code>use_frameworks!</code> is required for pods made in Swift.</p>
+
+<h4>
+<a id="carthage" class="anchor" href="#carthage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Carthage</h4>
+
+<p>Add the following to your <code>Cartfile</code>:</p>
+
+<div class="highlight highlight-Ruby"><pre>github <span class="pl-s"><span class="pl-pds">"</span>KyoheiG3/PagingView<span class="pl-pds">"</span></span></pre></div>
+
+<h3>
+<a id="ios-7" class="anchor" href="#ios-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>iOS 7</h3>
+
+<p>Just add everything in the <code>PagingView.swift</code>, <code>PagingViewCell.swift</code> and <code>Constraints.swift</code> file to your project.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="import" class="anchor" href="#import" aria-hidden="true"><span class="octicon octicon-link"></span></a>import</h3>
+
+<p>If target is ios8.0 or later, please import the <code>PagingView</code>.</p>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">import</span> <span class="pl-c1">PagingView</span></pre></div>
+
+<h3>
+<a id="pagingview-variable" class="anchor" href="#pagingview-variable" aria-hidden="true"><span class="octicon octicon-link"></span></a>PagingView Variable</h3>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">weak</span> <span class="pl-k">var</span> dataSource: PagingViewDataSource?</pre></div>
+
+<ul>
+<li>DataSource of <code>PagingView</code>. Same as <code>dataSource</code> of <code>UICollectionView</code>.</li>
+</ul>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">var</span> pagingMargin: <span class="pl-c1">UInt</span></pre></div>
+
+<ul>
+<li>Margin between the content.</li>
+<li>Default is <code>0</code>.</li>
+</ul>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">var</span> pagingInset: <span class="pl-c1">UInt</span></pre></div>
+
+<ul>
+<li>Inset of content relative to size of <code>PagingView</code>.</li>
+<li>Value of two times than of <code>pagingInset</code> to set for the left and right of <code>contentInset</code>.</li>
+<li>Default is <code>0</code>.</li>
+</ul>
+
+<h3>
+<a id="pagingview-function" class="anchor" href="#pagingview-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>PagingView Function</h3>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">func</span> <span class="pl-en">dequeueReusableCellWithReuseIdentifier</span>(identifier: <span class="pl-c1">String</span>) <span class="pl-k">-&gt;</span> PagingView.PagingViewCell</pre></div>
+
+<ul>
+<li>Used by the <code>delegate</code> to acquire an already allocated cell, in lieu of allocating a new one.</li>
+</ul>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">func</span> <span class="pl-en">registerNib</span>(nib: UINib?, forCellWithReuseIdentifier <span class="pl-smi">identifier</span>: <span class="pl-c1">String</span>)</pre></div>
+
+<ul>
+<li>If a nib is registered, it must contain exactly 1 top level object which is a <code>PagingViewCell</code>.</li>
+</ul>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">func</span> <span class="pl-en">registerClass</span>&lt;T <span class="pl-k">:</span> PagingView<span class="pl-k">.</span>PagingViewCell&gt;(viewClass: T<span class="pl-k">.</span><span class="pl-k">Type</span>, forCellWithReuseIdentifier <span class="pl-smi">identifier</span>: <span class="pl-c1">String</span>)</pre></div>
+
+<ul>
+<li>If a class is registered, it will be instantiated via <code>init(frame: CGRect)</code>.</li>
+</ul>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">func</span> <span class="pl-en">reloadData</span>()</pre></div>
+
+<ul>
+<li>Requery the <code>dataSource</code> and <code>delegate</code> as necessary.</li>
+</ul>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">func</span> <span class="pl-en">numberOfSections</span>() <span class="pl-k">-&gt;</span> <span class="pl-c1">Int</span>
+<span class="pl-k">func</span> <span class="pl-en">numberOfItemsInSection</span>(section: <span class="pl-c1">Int</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">Int</span></pre></div>
+
+<ul>
+<li>Information about the current state of the <code>PagingView</code>.</li>
+</ul>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">func</span> <span class="pl-en">scrollToPosition</span>(position: PagingView<span class="pl-k">.</span>PagingView<span class="pl-k">.</span>Position, indexPath: NSIndexPath? <span class="pl-k">=</span> <span class="pl-k">default</span>, animated: <span class="pl-c1">Bool</span> <span class="pl-k">=</span> <span class="pl-k">default</span>)</pre></div>
+
+<ul>
+<li>To scroll at <code>Position</code>.</li>
+<li>Cell configure is performed at <code>NSIndexPath</code>.</li>
+</ul>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">func</span> <span class="pl-en">configureAtPosition</span>(position: PagingView<span class="pl-k">.</span>PagingView<span class="pl-k">.</span>Position, toIndexPath: NSIndexPath? <span class="pl-k">=</span> <span class="pl-k">default</span>)</pre></div>
+
+<ul>
+<li>Configure cell of <code>Position</code>.</li>
+<li>IndexPath of cell in the center if indexPath is <code>nil</code>.</li>
+</ul>
+
+<h3>
+<a id="pagingviewdatasource-function" class="anchor" href="#pagingviewdatasource-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>PagingViewDataSource Function</h3>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">func</span> <span class="pl-en">pagingView</span>(pagingView: PagingView<span class="pl-k">.</span>PagingView, numberOfItemsInSection <span class="pl-smi">section</span>: <span class="pl-c1">Int</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">Int</span></pre></div>
+
+<ul>
+<li>Paging count number of paging item in section.</li>
+</ul>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">func</span> <span class="pl-en">pagingView</span>(pagingView: PagingView<span class="pl-k">.</span>PagingView, cellForItemAtIndexPath <span class="pl-smi">indexPath</span>: NSIndexPath) <span class="pl-k">-&gt;</span> PagingView.PagingViewCell</pre></div>
+
+<ul>
+<li>Implementers should <em>always</em> try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with <code>dequeueReusableCellWithReuseIdentifier:</code>.</li>
+</ul>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">optional</span> <span class="pl-k">func</span> <span class="pl-en">numberOfSectionsInPagingView</span>(pagingView: PagingView<span class="pl-k">.</span>PagingView) <span class="pl-k">-&gt;</span> <span class="pl-c1">Int</span></pre></div>
+
+<ul>
+<li>Paging count number of paging item section in <code>PagingView</code>.</li>
+<li>Default return value is <code>1</code>.</li>
+</ul>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">optional</span> <span class="pl-k">func</span> <span class="pl-en">indexPathOfStartingInPagingView</span>(pagingView: PagingView<span class="pl-k">.</span>PagingView) <span class="pl-k">-&gt;</span> NSIndexPath?</pre></div>
+
+<ul>
+<li>IndexPath when <code>pagingView:cellForItemAtIndexPath:</code> is first called</li>
+<li>Default return value is <code>0 - 0</code> of <code>NSIndexPath</code> instance.</li>
+</ul>
+
+<h3>
+<a id="pagingviewdelegate-function" class="anchor" href="#pagingviewdelegate-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>PagingViewDelegate Function</h3>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">optional</span> <span class="pl-k">func</span> <span class="pl-en">pagingView</span>(pagingView: PagingView<span class="pl-k">.</span>PagingView, willDisplayCell <span class="pl-smi">cell</span>: PagingView<span class="pl-k">.</span>PagingViewCell, forItemAtIndexPath <span class="pl-smi">indexPath</span>: NSIndexPath)
+<span class="pl-k">optional</span> <span class="pl-k">func</span> <span class="pl-en">pagingView</span>(pagingView: PagingView<span class="pl-k">.</span>PagingView, didEndDisplayingCell <span class="pl-smi">cell</span>: PagingView<span class="pl-k">.</span>PagingViewCell, forItemAtIndexPath <span class="pl-smi">indexPath</span>: NSIndexPath)</pre></div>
+
+<ul>
+<li>Called at the display and end-display of.</li>
+</ul>
+
+<h3>
+<a id="pagingviewcell-function" class="anchor" href="#pagingviewcell-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>PagingViewCell Function</h3>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">func</span> <span class="pl-en">prepareForReuse</span>()</pre></div>
+
+<ul>
+<li>if the cell is reusable (has a reuse identifier), this is called just before the cell is returned from the paging view method <code>dequeueReusableCellWithReuseIdentifier:</code>.</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE</h2>
+
+<p>Under the MIT license. See LICENSE file for details.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/KyoheiG3/PagingView">Pagingview</a> is maintained by <a href="https://github.com/KyoheiG3">KyoheiG3</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
